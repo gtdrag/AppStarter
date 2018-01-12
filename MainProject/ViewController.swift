@@ -11,10 +11,22 @@ import BWWalkthrough
 
 
 class ViewController: UIViewController, BWWalkthroughViewControllerDelegate {
-
+    
     var walkthrough = BWWalkthroughViewController()
     
-    @IBAction func showWalkthrough() {
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let defaults = UserDefaults.standard
+        let shown  = defaults.bool(forKey: "walkThroughHasBeenShown")
+        
+        if !shown {
+            let defaults = UserDefaults.standard
+            defaults.set(true, forKey: "walkThroughHasBeenShown")
+            showWalkthrough()
+        }
+    }
+   
+    func showWalkthrough() {
         let stb = UIStoryboard(name: "Main", bundle: nil)
         self.walkthrough = stb.instantiateViewController(withIdentifier: "walkthrough") as! BWWalkthroughViewController
         let page_one = stb.instantiateViewController(withIdentifier: "page_1")
@@ -34,19 +46,20 @@ class ViewController: UIViewController, BWWalkthroughViewControllerDelegate {
     func walkthroughCloseButtonPressed() {
         self.dismiss(animated: true, completion: nil)
     }
-
+    
     func walkthroughPageDidChange(_ pageNumber: Int) {
         if pageNumber + 1 == walkthrough.numberOfPages {
-            switchViewControllers()
+            
+            destroyIntro()
         }
     }
     
-    func switchViewControllers() {
+    func destroyIntro() {
         // switch root view controllers
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         let nav = storyboard.instantiateViewController(withIdentifier: "signup")
         UIApplication.shared.keyWindow?.rootViewController = nav
- }
+    }
 }
 
 

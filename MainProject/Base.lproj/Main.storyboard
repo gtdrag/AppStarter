@@ -73,7 +73,7 @@
         <!--View Controller-->
         <scene sceneID="hia-r7-Iu4">
             <objects>
-                <viewController storyboardIdentifier="signup" id="NFB-Ww-Ttv" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signup" id="NFB-Ww-Ttv" customClass="ViewController" customModule="MainProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EoU-9c-lTk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -103,10 +103,10 @@
             </objects>
             <point key="canvasLocation" x="-483" y="1119"/>
         </scene>
-        <!--View Controller-->
+        <!--Dummy View Controller-->
         <scene sceneID="evL-Qs-8nd">
             <objects>
-                <viewController id="UoD-bm-bCw" customClass="ViewController" customModule="MainProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="dummy" id="UoD-bm-bCw" customClass="DummyViewController" customModule="MainProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="b5Q-Cu-q7e">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
