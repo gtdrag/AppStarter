@@ -1,24 +1,242 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UoD-bm-bCw">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Walkthrough View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="walkthrough" id="BYZ-38-t0r" customClass="BWWalkthroughViewController" customModule="BWWalkthrough" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6a-Z9-eGh">
+                                <rect key="frame" x="16" y="309" width="30" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="&lt;"/>
+                                <connections>
+                                    <action selector="prevPage" destination="BYZ-38-t0r" eventType="touchUpInside" id="u30-Mx-fxy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n3h-VW-Y6u">
+                                <rect key="frame" x="329" y="309" width="30" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="&gt;"/>
+                                <connections>
+                                    <action selector="nextPage" destination="BYZ-38-t0r" eventType="touchUpInside" id="f7u-P6-iIu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Km0-ji-VJy">
+                                <rect key="frame" x="329" y="36" width="30" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="X"/>
+                                <connections>
+                                    <action selector="close:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JrB-Hq-UcP"/>
+                                </connections>
+                            </button>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="soS-gd-zUq">
+                                <rect key="frame" x="168" y="610" width="39" height="37"/>
+                            </pageControl>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="q6a-Z9-eGh" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="0JP-0w-s3O"/>
+                            <constraint firstItem="soS-gd-zUq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0YU-Mi-Btr"/>
+                            <constraint firstItem="Km0-ji-VJy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="152-mv-aKP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="n3h-VW-Y6u" secondAttribute="trailing" constant="16" id="8Xo-jj-lcr"/>
+                            <constraint firstItem="q6a-Z9-eGh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="9hO-ZK-HJr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Km0-ji-VJy" secondAttribute="trailing" constant="16" id="Ywi-9X-t0v"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="soS-gd-zUq" secondAttribute="bottom" constant="20" id="nUE-Zq-GAr"/>
+                            <constraint firstItem="n3h-VW-Y6u" firstAttribute="centerY" secondItem="q6a-Z9-eGh" secondAttribute="centerY" id="sZg-sd-dam"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="closeButton" destination="Km0-ji-VJy" id="GCU-xb-4aF"/>
+                        <outlet property="nextButton" destination="n3h-VW-Y6u" id="6MX-f3-JFU"/>
+                        <outlet property="pageControl" destination="soS-gd-zUq" id="iSv-4V-gfv"/>
+                        <outlet property="prevButton" destination="q6a-Z9-eGh" id="BXQ-v2-zUb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-474" y="429"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="hia-r7-Iu4">
+            <objects>
+                <viewController storyboardIdentifier="signup" id="NFB-Ww-Ttv" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EoU-9c-lTk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signup Screen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhj-ea-BhV">
+                                <rect key="frame" x="131.5" y="323" width="111.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oN5-cZ-4xb">
+                                <rect key="frame" x="163" y="617" width="48" height="30"/>
+                                <state key="normal" title="Signup"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="m3A-UA-W5x" firstAttribute="bottom" secondItem="oN5-cZ-4xb" secondAttribute="bottom" constant="20" id="45K-bv-Bkg"/>
+                            <constraint firstItem="xhj-ea-BhV" firstAttribute="centerX" secondItem="EoU-9c-lTk" secondAttribute="centerX" id="bba-08-PyI"/>
+                            <constraint firstItem="xhj-ea-BhV" firstAttribute="centerY" secondItem="EoU-9c-lTk" secondAttribute="centerY" id="drA-jw-tiZ"/>
+                            <constraint firstItem="oN5-cZ-4xb" firstAttribute="centerX" secondItem="EoU-9c-lTk" secondAttribute="centerX" id="vUb-17-MuO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="m3A-UA-W5x"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hae-k8-Rnn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-483" y="1119"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="evL-Qs-8nd">
+            <objects>
+                <viewController id="UoD-bm-bCw" customClass="ViewController" customModule="MainProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="b5Q-Cu-q7e">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tEn-31-tTa">
+                                <rect key="frame" x="164" y="254" width="46" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Show"/>
+                                <connections>
+                                    <action selector="showWalkthrough" destination="UoD-bm-bCw" eventType="touchUpInside" id="HVh-g8-2XS"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="xuv-9z-EGx"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r5k-8Q-UDu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1223.2" y="428.63568215892059"/>
+        </scene>
+        <!--Walkthrough Page View Controller-->
+        <scene sceneID="Cd6-q9-HBL">
+            <objects>
+                <viewController storyboardIdentifier="page_1" id="S8R-bv-NyP" customClass="BWWalkthroughPageViewController" customModule="BWWalkthrough" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HYz-yu-7WW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="page One" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSv-22-Wcz">
+                                <rect key="frame" x="104" y="309.5" width="167" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="rSv-22-Wcz" firstAttribute="centerX" secondItem="HYz-yu-7WW" secondAttribute="centerX" id="EKF-fO-2bn"/>
+                            <constraint firstItem="rSv-22-Wcz" firstAttribute="centerY" secondItem="HYz-yu-7WW" secondAttribute="centerY" id="VR8-Wx-fQk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xdi-bU-JRt"/>
+                    </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="point" keyPath="speed">
+                            <point key="value" x="10" y="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="point" keyPath="speedVariance">
+                            <point key="value" x="0.0" y="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="animateAlpha" value="NO"/>
+                    </userDefinedRuntimeAttributes>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vd2-dM-ztC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="199" y="429"/>
+        </scene>
+        <!--Walkthrough Page View Controller-->
+        <scene sceneID="UfZ-sz-E0S">
+            <objects>
+                <viewController storyboardIdentifier="page_2" id="37d-Zq-3fq" customClass="BWWalkthroughPageViewController" customModule="BWWalkthrough" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QA3-M0-Fjp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="page Two" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yCW-Ft-i8S">
+                                <rect key="frame" x="105" y="309.5" width="165" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="yCW-Ft-i8S" firstAttribute="centerY" secondItem="QA3-M0-Fjp" secondAttribute="centerY" id="TKu-QT-atR"/>
+                            <constraint firstItem="yCW-Ft-i8S" firstAttribute="centerX" secondItem="QA3-M0-Fjp" secondAttribute="centerX" id="iFf-GY-n4g"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="nOD-Q1-Yrz"/>
+                    </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="point" keyPath="speed">
+                            <point key="value" x="1" y="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="point" keyPath="speedVariance">
+                            <point key="value" x="1" y="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="animateAlpha" value="YES"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="animationType" value="Zoom"/>
+                    </userDefinedRuntimeAttributes>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zEY-pq-NxH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="894" y="429"/>
+        </scene>
+        <!--Walkthrough Page View Controller-->
+        <scene sceneID="ldA-1D-FFg">
+            <objects>
+                <viewController storyboardIdentifier="page_3" id="k4i-Mq-DSH" customClass="BWWalkthroughPageViewController" customModule="BWWalkthrough" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="L7r-1A-mcX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="page Three" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JFu-bq-zyj">
+                                <rect key="frame" x="90.5" y="309.5" width="194" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="JFu-bq-zyj" firstAttribute="centerY" secondItem="L7r-1A-mcX" secondAttribute="centerY" id="4bo-3x-Q2B"/>
+                            <constraint firstItem="JFu-bq-zyj" firstAttribute="centerX" secondItem="L7r-1A-mcX" secondAttribute="centerX" id="hDE-og-g1h"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vPn-OT-H9J"/>
+                    </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="point" keyPath="speed">
+                            <point key="value" x="1" y="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="point" keyPath="speedVariance">
+                            <point key="value" x="1" y="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="animateAlpha" value="YES"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="animationType" value="InOut"/>
+                    </userDefinedRuntimeAttributes>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yhi-Zf-Pk1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1630" y="429"/>
         </scene>
     </scenes>
 </document>

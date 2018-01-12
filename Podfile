@@ -7,4 +7,5 @@ target 'MainProject' do
 
   # Pods for MainProject
   pod 'AFNetworking', '~> 3.0'
+  pod "BWWalkthrough"
 end
