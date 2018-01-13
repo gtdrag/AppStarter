@@ -9,7 +9,6 @@
 import UIKit
 import BWWalkthrough
 
-
 class ViewController: UIViewController, BWWalkthroughViewControllerDelegate {
     
     var walkthrough = BWWalkthroughViewController()
@@ -42,6 +41,22 @@ class ViewController: UIViewController, BWWalkthroughViewControllerDelegate {
         present(walkthrough, animated: true, completion: nil)
     }
     
+    @IBAction func signupTouched() {
+        
+    }
+    
+    @IBAction func showLogin() {
+        
+    }
+    
+    func hideWalkThrough() {
+        // switch root view controllers
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let nav = storyboard.instantiateViewController(withIdentifier: "signup")
+        UIApplication.shared.keyWindow?.rootViewController = nav
+    }
+
+    
     // delegate methods
     func walkthroughCloseButtonPressed() {
         self.dismiss(animated: true, completion: nil)
@@ -49,16 +64,8 @@ class ViewController: UIViewController, BWWalkthroughViewControllerDelegate {
     
     func walkthroughPageDidChange(_ pageNumber: Int) {
         if pageNumber + 1 == walkthrough.numberOfPages {
-            
-            destroyIntro()
+            hideWalkThrough()
         }
-    }
-    
-    func destroyIntro() {
-        // switch root view controllers
-        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        let nav = storyboard.instantiateViewController(withIdentifier: "signup")
-        UIApplication.shared.keyWindow?.rootViewController = nav
     }
 }
 
