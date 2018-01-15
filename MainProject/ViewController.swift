@@ -9,7 +9,17 @@
 import UIKit
 import BWWalkthrough
 
-class ViewController: UIViewController, BWWalkthroughViewControllerDelegate {
+struct Constants {
+    static let signupSegue = "signupSegue"
+    static let loginSegue = "loginSegue"
+}
+
+class ViewController: UIViewController, BWWalkthroughViewControllerDelegate, signupViewControllerDelegate, loginViewControllerDelegate {
+    
+    
+    
+    @IBOutlet weak var signupView: UIView!
+    @IBOutlet weak var loginView: UIView!
     
     var walkthrough = BWWalkthroughViewController()
     
@@ -41,19 +51,23 @@ class ViewController: UIViewController, BWWalkthroughViewControllerDelegate {
         present(walkthrough, animated: true, completion: nil)
     }
     
-    @IBAction func signupTouched() {
-        
-    }
-    
-    @IBAction func showLogin() {
-        
-    }
-    
+
     func hideWalkThrough() {
         // switch root view controllers
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         let nav = storyboard.instantiateViewController(withIdentifier: "signup")
         UIApplication.shared.keyWindow?.rootViewController = nav
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constants.signupSegue {
+            let signupViewController = segue.destination as! SignupViewController
+            signupViewController.delegate = self
+        } else if
+            segue.identifier == Constants.loginSegue {
+            let loginViewController = segue.destination as! LoginViewController
+            loginViewController.delegate = self
+        }
     }
 
     
@@ -66,6 +80,18 @@ class ViewController: UIViewController, BWWalkthroughViewControllerDelegate {
         if pageNumber + 1 == walkthrough.numberOfPages {
             hideWalkThrough()
         }
+    }
+    
+    func loginViewControllerDidPressButton(loginViewController: LoginViewController) {
+        signupView.alpha = 1
+        loginView.alpha = 0
+    }
+    
+    func signupViewControllerDidPressButton(signupViewController:
+        SignupViewController) {
+        
+        signupView.alpha = 0
+        loginView.alpha = 1
     }
 }
 
