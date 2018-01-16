@@ -34,6 +34,7 @@
 		D697CFC9200D37E20080438B /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		D697CFCB200D3D810080438B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D6C49931200D78D6006C8F05 /* UIView+autosizeSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+autosizeSubview.swift"; sourceTree = "<group>"; };
+		D6C49933200D990A006C8F05 /* MainProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MainProject.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +87,7 @@
 		D692882C2009350B004BDF02 /* MainProject */ = {
 			isa = PBXGroup;
 			children = (
+				D6C49933200D990A006C8F05 /* MainProject.entitlements */,
 				D697CFCB200D3D810080438B /* LoginViewController.swift */,
 				D697CFC9200D37E20080438B /* SignupViewController.swift */,
 				D692882D2009350B004BDF02 /* AppDelegate.swift */,
@@ -136,6 +138,11 @@
 					D69288292009350B004BDF02 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -382,9 +389,11 @@
 			baseConfigurationReference = 044045F8A24280AA6BCD04F6 /* Pods-MainProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MainProject/MainProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 75SL55EPD7;
 				INFOPLIST_FILE = MainProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = George.MainProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -398,9 +407,11 @@
 			baseConfigurationReference = 814915C05140149D63E99485 /* Pods-MainProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MainProject/MainProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 75SL55EPD7;
 				INFOPLIST_FILE = MainProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = George.MainProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
