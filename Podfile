@@ -7,5 +7,8 @@ target 'MainProject' do
 
   # Pods for MainProject
   pod 'AFNetworking', '~> 3.0'
-  pod "BWWalkthrough"
+  pod 'BWWalkthrough'
+  pod 'FBSDKCoreKit', '~> 4.10.0'
+  pod 'FBSDKLoginKit', '~> 4.10.0'
+  pod 'FBSDKShareKit', '~> 4.10.0'
 end

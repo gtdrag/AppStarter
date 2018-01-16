@@ -16,6 +16,7 @@
 		D697CF8220097AE70080438B /* DummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D697CF8120097AE70080438B /* DummyViewController.swift */; };
 		D697CFCA200D37E20080438B /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D697CFC9200D37E20080438B /* SignupViewController.swift */; };
 		D697CFCC200D3D810080438B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D697CFCB200D3D810080438B /* LoginViewController.swift */; };
+		D6C49932200D78D6006C8F05 /* UIView+autosizeSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C49931200D78D6006C8F05 /* UIView+autosizeSubview.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		D697CF8120097AE70080438B /* DummyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyViewController.swift; sourceTree = "<group>"; };
 		D697CFC9200D37E20080438B /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		D697CFCB200D3D810080438B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D6C49931200D78D6006C8F05 /* UIView+autosizeSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+autosizeSubview.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				D69288362009350B004BDF02 /* LaunchScreen.storyboard */,
 				D69288392009350B004BDF02 /* Info.plist */,
 				D697CF8120097AE70080438B /* DummyViewController.swift */,
+				D6C49931200D78D6006C8F05 /* UIView+autosizeSubview.swift */,
 			);
 			path = MainProject;
 			sourceTree = "<group>";
@@ -210,11 +213,19 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-MainProject/Pods-MainProject-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/BWWalkthrough/BWWalkthrough.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BWWalkthrough.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -230,6 +241,7 @@
 			files = (
 				D69288302009350B004BDF02 /* ViewController.swift in Sources */,
 				D697CF8220097AE70080438B /* DummyViewController.swift in Sources */,
+				D6C49932200D78D6006C8F05 /* UIView+autosizeSubview.swift in Sources */,
 				D697CFCA200D37E20080438B /* SignupViewController.swift in Sources */,
 				D697CFCC200D3D810080438B /* LoginViewController.swift in Sources */,
 				D692882E2009350B004BDF02 /* AppDelegate.swift in Sources */,

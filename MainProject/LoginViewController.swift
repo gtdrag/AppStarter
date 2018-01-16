@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
 protocol loginViewControllerDelegate {
     func loginViewControllerDidPressButton(loginViewController: LoginViewController)

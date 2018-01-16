@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
 protocol signupViewControllerDelegate {
     func signupViewControllerDidPressButton(signupViewController: SignupViewController)
@@ -15,6 +16,7 @@ protocol signupViewControllerDelegate {
 class SignupViewController: UIViewController {
     var delegate: signupViewControllerDelegate?
     
+    @IBOutlet weak var faceBookSignupButton: UIButton!
     @IBOutlet weak var showLoginButton: UIButton!
     
     @IBAction func buttonWasPressed(_ sender: UIButton) {
@@ -23,7 +25,8 @@ class SignupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        let loginButton = FBSDKLoginButton()
+        faceBookSignupButton.addSubview(loginButton)
+        loginButton.bindFrameToSuperviewBounds()
     }
 }
