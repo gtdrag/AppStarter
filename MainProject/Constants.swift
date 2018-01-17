@@ -12,4 +12,5 @@ struct Constants {
     static let signupSegue = "signupSegue"
     static let loginSegue = "loginSegue"
     static let googleClientID = "96863726100-8u53daemj30kai25blormvsd2a81559s.apps.googleusercontent.com"
+    static let oneSignalAppID = "7952c420-4c3c-443d-aef2-b9afd08617e8"
 }
