@@ -284,39 +284,7 @@
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bwp-IB-Tw1">
                                         <rect key="frame" x="0.0" y="154.33333333333334" width="300" height="62"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3zG-lM-6rZ">
-                                                <rect key="frame" x="138.33333333333334" y="20.333333333333314" width="24.666666666666657" height="20.333333333333329"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QTw-Hq-Hzg">
-                                                <rect key="frame" x="4.9999999999999929" y="29.333333333333314" width="118.33333333333331" height="2"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="2" id="ylP-mY-L4R"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ko8-mw-AmN">
-                                                <rect key="frame" x="176.66666666666669" y="29.333333333333314" width="118.33333333333331" height="2"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="2" id="HAx-se-A94"/>
-                                                </constraints>
-                                            </view>
-                                        </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="3zG-lM-6rZ" firstAttribute="centerY" secondItem="Bwp-IB-Tw1" secondAttribute="centerY" id="Bxr-DP-ZIW"/>
-                                            <constraint firstItem="Ko8-mw-AmN" firstAttribute="width" secondItem="QTw-Hq-Hzg" secondAttribute="width" id="DFe-oH-53K"/>
-                                            <constraint firstItem="3zG-lM-6rZ" firstAttribute="centerX" secondItem="Bwp-IB-Tw1" secondAttribute="centerX" id="Vpa-Nm-Kbe"/>
-                                            <constraint firstItem="Ko8-mw-AmN" firstAttribute="centerY" secondItem="Bwp-IB-Tw1" secondAttribute="centerY" id="ZsQ-iN-jWf"/>
-                                            <constraint firstAttribute="trailing" secondItem="Ko8-mw-AmN" secondAttribute="trailing" constant="5" id="aeg-gJ-nrl"/>
-                                            <constraint firstItem="QTw-Hq-Hzg" firstAttribute="leading" secondItem="Bwp-IB-Tw1" secondAttribute="leading" constant="5" id="nUh-pj-ylz"/>
-                                            <constraint firstItem="QTw-Hq-Hzg" firstAttribute="centerY" secondItem="Bwp-IB-Tw1" secondAttribute="centerY" id="pVP-qr-BQn"/>
-                                            <constraint firstItem="3zG-lM-6rZ" firstAttribute="leading" secondItem="QTw-Hq-Hzg" secondAttribute="trailing" constant="15" id="uRd-Eo-KHZ"/>
-                                        </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UfT-tL-jXR">
                                         <rect key="frame" x="0.0" y="231.33333333333337" width="300" height="62"/>
@@ -347,6 +315,7 @@
                     </view>
                     <connections>
                         <outlet property="faceBookSignupButton" destination="odR-rl-J2z" id="Ppz-jV-V6r"/>
+                        <outlet property="googleSignupButton" destination="Bwp-IB-Tw1" id="FgW-xv-ZqW"/>
                         <outlet property="showLoginButton" destination="gfM-cO-Xs7" id="Gso-1q-hIT"/>
                     </connections>
                 </viewController>

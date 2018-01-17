@@ -8,14 +8,19 @@
 
 import UIKit
 import FBSDKLoginKit
+import GoogleSignIn
+
 
 protocol signupViewControllerDelegate {
     func signupViewControllerDidPressButton(signupViewController: SignupViewController)
 }
 
-class SignupViewController: UIViewController, FBSDKLoginButtonDelegate {
+class SignupViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate {
     var delegate: signupViewControllerDelegate?
+    var currentUser: User?
     
+    
+    @IBOutlet weak var googleSignupButton: UIView!
     @IBOutlet weak var faceBookSignupButton: UIButton!
     @IBOutlet weak var showLoginButton: UIButton!
     
@@ -25,36 +30,55 @@ class SignupViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let loginButton = FBSDKLoginButton()
-        faceBookSignupButton.addSubview(loginButton)
-        loginButton.bindFrameToSuperviewBounds()
-        loginButton.delegate = self
+        setupFacebookButton()
+        setupGoogleButton()
         
-        if let token = FBSDKAccessToken.current() {
+        if (FBSDKAccessToken.current()) != nil {
             fetchProfile()
         }
         
     }
     
-    func fetchProfile() {
+    fileprivate func setupFacebookButton(){
+        let loginButton = FBSDKLoginButton()
+        faceBookSignupButton.addSubview(loginButton)
+        loginButton.bindFrameToSuperviewBounds()
+        loginButton.delegate = self
+    }
+    
+    fileprivate func setupGoogleButton(){
+        let googleButton = GIDSignInButton()
+        googleButton.style = .wide
+        googleSignupButton.addSubview(googleButton)
+        googleButton.bindFrameToSuperviewBounds()
+        GIDSignIn.sharedInstance().uiDelegate = self
         
-        FBSDKGraphRequest(graphPath: "me", parameters: ["fields" : "email, first_name, last_name, id, gender, picture.type(large)"])
+        // TODO: customize button to match design better
+    }
+    
+    func fetchProfile() {
+        FBSDKGraphRequest(graphPath: "me", parameters: ["fields" : "email, first_name, last_name, picture.type(large)"])
             .start(completionHandler:  {
                 (connection, result, error) in
                 if error != nil {
-                    print(error)
+                    print(error!)
                     return
                 }
                 if let result = result as? NSDictionary {
-                    let email = result["email"] as? String
-                    let user_name = result["first_name"] as? String
-                    let user_gender = result["gender"] as? String
-                    let user_id_fb = result["id"]  as? String
-                    
-                     print(user_name!)
+                    if let first_name = result["first_name"] as? String,
+                        let last_name = result["last_name"] as? String,
+                        let photo = result["picture"] as? UIImage,
+                        let email = result["email"] as? String {
+                        self.currentUser = User(firstname: first_name, lastname: last_name, email: email, photo: photo)
+                        self.gotoProfile()
+                    }
                 }
-    
             })
+    }
+    
+    func gotoProfile() {
+        // show profile page
+        
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {

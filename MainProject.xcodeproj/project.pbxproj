@@ -17,6 +17,8 @@
 		D697CFCA200D37E20080438B /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D697CFC9200D37E20080438B /* SignupViewController.swift */; };
 		D697CFCC200D3D810080438B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D697CFCB200D3D810080438B /* LoginViewController.swift */; };
 		D6C49932200D78D6006C8F05 /* UIView+autosizeSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C49931200D78D6006C8F05 /* UIView+autosizeSubview.swift */; };
+		D6C49935200E4D2F006C8F05 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C49934200E4D2F006C8F05 /* User.swift */; };
+		D6C4993C200EF350006C8F05 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C4993B200EF350006C8F05 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,8 @@
 		D697CFCB200D3D810080438B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D6C49931200D78D6006C8F05 /* UIView+autosizeSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+autosizeSubview.swift"; sourceTree = "<group>"; };
 		D6C49933200D990A006C8F05 /* MainProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MainProject.entitlements; sourceTree = "<group>"; };
+		D6C49934200E4D2F006C8F05 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D6C4993B200EF350006C8F05 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,8 +93,10 @@
 			children = (
 				D6C49933200D990A006C8F05 /* MainProject.entitlements */,
 				D697CFCB200D3D810080438B /* LoginViewController.swift */,
+				D6C49934200E4D2F006C8F05 /* User.swift */,
 				D697CFC9200D37E20080438B /* SignupViewController.swift */,
 				D692882D2009350B004BDF02 /* AppDelegate.swift */,
+				D6C4993B200EF350006C8F05 /* Constants.swift */,
 				D692882F2009350B004BDF02 /* ViewController.swift */,
 				D69288312009350B004BDF02 /* Main.storyboard */,
 				D69288342009350B004BDF02 /* Assets.xcassets */,
@@ -202,9 +208,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MainProject/Pods-MainProject-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -224,6 +233,9 @@
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -233,6 +245,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -252,6 +267,8 @@
 				D697CFCA200D37E20080438B /* SignupViewController.swift in Sources */,
 				D697CFCC200D3D810080438B /* LoginViewController.swift in Sources */,
 				D692882E2009350B004BDF02 /* AppDelegate.swift in Sources */,
+				D6C49935200E4D2F006C8F05 /* User.swift in Sources */,
+				D6C4993C200EF350006C8F05 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

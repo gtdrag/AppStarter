@@ -10,16 +10,8 @@ import UIKit
 import BWWalkthrough
 
 
-
-struct Constants {
-    static let signupSegue = "signupSegue"
-    static let loginSegue = "loginSegue"
-}
-
-class ViewController: UIViewController, BWWalkthroughViewControllerDelegate, signupViewControllerDelegate, loginViewControllerDelegate {
-    
-    
-    
+class ViewController: UIViewController {
+   
     @IBOutlet weak var signupView: UIView!
     @IBOutlet weak var loginView: UIView!
     
@@ -71,9 +63,9 @@ class ViewController: UIViewController, BWWalkthroughViewControllerDelegate, sig
             loginViewController.delegate = self
         }
     }
+}
 
-    
-    // delegate methods
+extension ViewController : BWWalkthroughViewControllerDelegate, signupViewControllerDelegate, loginViewControllerDelegate {
     func walkthroughCloseButtonPressed() {
         self.dismiss(animated: true, completion: nil)
     }
@@ -85,16 +77,19 @@ class ViewController: UIViewController, BWWalkthroughViewControllerDelegate, sig
     }
     
     func loginViewControllerDidPressButton(loginViewController: LoginViewController) {
-        signupView.alpha = 1
-        loginView.alpha = 0
+        UIView.animate(withDuration: 0.2) {
+            self.signupView.alpha = 1
+            self.loginView.alpha = 0
+        }
+        
     }
     
     func signupViewControllerDidPressButton(signupViewController:
         SignupViewController) {
-        
-        signupView.alpha = 0
-        loginView.alpha = 1
+        UIView.animate(withDuration: 0.2) {
+            self.signupView.alpha = 0
+            self.loginView.alpha = 1
+        }
     }
 }
-
 

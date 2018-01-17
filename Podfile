@@ -11,4 +11,5 @@ target 'MainProject' do
   pod 'FBSDKCoreKit', '~> 4.10.0'
   pod 'FBSDKLoginKit', '~> 4.10.0'
   pod 'FBSDKShareKit', '~> 4.10.0'
+  pod 'GoogleSignIn'
 end
