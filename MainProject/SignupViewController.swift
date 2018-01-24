@@ -9,13 +9,15 @@
 import UIKit
 import FBSDKLoginKit
 import GoogleSignIn
+import FancyTextField
+
 
 
 protocol signupViewControllerDelegate {
     func signupViewControllerDidPressButton(signupViewController: SignupViewController)
 }
 
-class SignupViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate {
+class SignupViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate, FancyTextFieldDelegate {
     var delegate: signupViewControllerDelegate?
     var currentUser: User?
     

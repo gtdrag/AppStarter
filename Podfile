@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '9.0'
+platform :ios, '10.0'
 
 target 'OneSignalNotificationServiceExtension' do
     use_frameworks!
@@ -18,6 +18,7 @@ target 'MainProject' do
   pod 'FBSDKShareKit', '~> 4.10.0'
   pod 'GoogleSignIn'
   pod 'OneSignal', '>= 2.5.2', '< 3.0'
+  pod 'FancyTextField'
   end
 
 

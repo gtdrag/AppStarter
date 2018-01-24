@@ -1,0 +1,6 @@
+framework module FancyTextField {
+  umbrella header "FancyTextField-umbrella.h"
+
+  export *
+  module * { export * }
+}
