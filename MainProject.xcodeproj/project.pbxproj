@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		16E5698764EDFD14B80477B3 /* Pods_MainProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FFB49EF302D0F5F125918FB /* Pods_MainProject.framework */; };
+		D6147BDB201A9B3F0065F330 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6147BDA201A9B3F0065F330 /* ChatViewController.swift */; };
 		D692882E2009350B004BDF02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D692882D2009350B004BDF02 /* AppDelegate.swift */; };
 		D69288302009350B004BDF02 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D692882F2009350B004BDF02 /* ViewController.swift */; };
 		D69288332009350B004BDF02 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D69288312009350B004BDF02 /* Main.storyboard */; };
@@ -55,6 +56,7 @@
 		814915C05140149D63E99485 /* Pods-MainProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MainProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-MainProject/Pods-MainProject.release.xcconfig"; sourceTree = "<group>"; };
 		B91B7C6430AA4D1E13D222F3 /* Pods_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneSignalNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2799A917F25E3CF004AEF3C /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		D6147BDA201A9B3F0065F330 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		D692882A2009350B004BDF02 /* MainProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MainProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D692882D2009350B004BDF02 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D692882F2009350B004BDF02 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				D69288392009350B004BDF02 /* Info.plist */,
 				D697CF8120097AE70080438B /* DummyViewController.swift */,
 				D6C49931200D78D6006C8F05 /* UIView+autosizeSubview.swift */,
+				D6147BDA201A9B3F0065F330 /* ChatViewController.swift */,
 			);
 			path = MainProject;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				D697CFCC200D3D810080438B /* LoginViewController.swift in Sources */,
 				D692882E2009350B004BDF02 /* AppDelegate.swift in Sources */,
 				D6C49935200E4D2F006C8F05 /* User.swift in Sources */,
+				D6147BDB201A9B3F0065F330 /* ChatViewController.swift in Sources */,
 				D6C4993C200EF350006C8F05 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

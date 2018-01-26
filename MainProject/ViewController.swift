@@ -9,7 +9,6 @@
 import UIKit
 import BWWalkthrough
 
-
 class ViewController: UIViewController {
    
     @IBOutlet weak var signupView: UIView!
@@ -66,6 +65,7 @@ class ViewController: UIViewController {
 }
 
 extension ViewController : BWWalkthroughViewControllerDelegate, signupViewControllerDelegate, loginViewControllerDelegate {
+    
     func walkthroughCloseButtonPressed() {
         self.dismiss(animated: true, completion: nil)
     }
@@ -90,6 +90,13 @@ extension ViewController : BWWalkthroughViewControllerDelegate, signupViewContro
             self.signupView.alpha = 0
             self.loginView.alpha = 1
         }
+    }
+    
+    func signupViewControllerGotoChat(user: User) {
+        let stb = UIStoryboard(name: "Main", bundle: nil)
+        let chatVC = stb.instantiateViewController(withIdentifier: "chatVC") as! ChatViewController
+        chatVC.currentUser = user
+        self.present(chatVC, animated: true, completion: nil)
     }
 }
 
