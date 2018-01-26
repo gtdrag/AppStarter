@@ -266,7 +266,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Iqx-xY-qXs">
-                                <rect key="frame" x="37.666666666666657" y="220.33333333333334" width="300" height="293.33333333333326"/>
+                                <rect key="frame" x="37.666666666666657" y="220.66666666666663" width="300" height="293"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LTI-JS-dce" customClass="FancyTextField" customModule="FancyTextField">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="62"/>
@@ -285,18 +285,18 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="odR-rl-J2z">
-                                        <rect key="frame" x="0.0" y="76.999999999999972" width="300" height="62.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="77.000000000000028" width="300" height="62"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bwp-IB-Tw1">
-                                        <rect key="frame" x="0.0" y="154.33333333333334" width="300" height="62"/>
+                                        <rect key="frame" x="0.0" y="154.00000000000003" width="300" height="62"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UfT-tL-jXR">
-                                        <rect key="frame" x="0.0" y="231.33333333333337" width="300" height="62"/>
+                                        <rect key="frame" x="0.0" y="231" width="300" height="62"/>
                                         <color key="backgroundColor" red="0.16903810108311992" green="0.85971208756345174" blue="0.45441237494624315" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Use my email">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -310,7 +310,6 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Iqx-xY-qXs" firstAttribute="height" secondItem="8Gg-OJ-xMI" secondAttribute="height" multiplier="4:10" id="894-6S-jFe"/>
                             <constraint firstItem="gfM-cO-Xs7" firstAttribute="leading" secondItem="8Gg-OJ-xMI" secondAttribute="leadingMargin" id="O38-IX-H6m"/>
                             <constraint firstItem="USL-Yb-LK1" firstAttribute="top" secondItem="8Gg-OJ-xMI" secondAttribute="topMargin" constant="30" id="QqP-DB-n4n"/>
                             <constraint firstItem="Iqx-xY-qXs" firstAttribute="centerX" secondItem="8Gg-OJ-xMI" secondAttribute="centerX" id="gZB-0I-GSB"/>
@@ -340,6 +339,16 @@
                     <view key="view" contentMode="scaleToFill" id="yXf-Ba-b05">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="puy-JQ-yXS">
+                                <rect key="frame" x="164" y="175" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="logoutFB" destination="nHR-Gc-VlB" eventType="touchUpInside" id="PBb-3C-S3x"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="RXI-o6-OAA"/>
                     </view>

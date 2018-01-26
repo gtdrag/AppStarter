@@ -12,9 +12,9 @@ class User {
     var firstname: String
     var lastname: String
     var email: String?
-    var photo: String?
+    var photo: URL?
     
-    init(firstname: String, lastname: String, email: String?, photo: String?) {
+    init(firstname: String, lastname: String, email: String?, photo: URL?) {
         self.firstname = firstname
         self.lastname = lastname
         self.email = email

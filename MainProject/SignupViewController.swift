@@ -19,7 +19,7 @@ protocol signupViewControllerDelegate {
 }
 
 class SignupViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate, FancyTextFieldDelegate {
-
+    
     
     var delegate: signupViewControllerDelegate?
     var currentUser: User?
@@ -39,7 +39,6 @@ class SignupViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignI
         setupGoogleButton()
         
         if (FBSDKAccessToken.current()) != nil {
-            
             fetchUserProfile()
         }
         
@@ -64,42 +63,39 @@ class SignupViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignI
     
     func fetchUserProfile()
     {
-        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"id, email, name, picture.width(480).height(480)"])
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"id, email, first_name, last_name, picture.width(480).height(480)"])
         graphRequest.start(completionHandler: { (connection, result, error) -> Void in
             
             if (error == nil){
                 guard let data = result as? [String:Any] else { return }
                 
-                let fbid = data["id"] as! String
-                let username = data["name"] as! String
-                // TODO: clean up all this user crap
-//                let firstName = data["first_name"] as! String
-//                let lastName = data["last_name"] as! String
+                let firstName = data["first_name"] as! String
+                let lastName = data["last_name"] as! String
                 let email = data["email"] as! String
-                if let profilePictureObj = data["picture"] as? NSDictionary
-                {
-                    let data = profilePictureObj["data"] as! NSDictionary
-                    let pictureUrlString  = data["url"] as! String
-                    let pictureUrl = NSURL(string: pictureUrlString)
-                }
-                self.currentUser = User(firstname: username, lastname: username, email: email, photo: "")
+                let profilePictureObj = data["picture"] as! NSDictionary
+                let picData = profilePictureObj["data"] as! NSDictionary
+                let pictureUrlString  = picData["url"] as! String
+                let pictureUrl = URL(string: pictureUrlString)
+                self.currentUser = User(firstname: firstName, lastname: lastName, email: email, photo: pictureUrl)
                 self.gotoChat()
             }
         })
     }
-        func gotoChat() {
-            self.delegate?.signupViewControllerGotoChat(user: self.currentUser!)
+    func gotoChat() {
+        self.delegate?.signupViewControllerGotoChat(user: self.currentUser!)
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        print("logged out of FB")
+    }
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        if error != nil {
+            print(error)
+            return
         }
-        
-        func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-            print("logged out of FB")
+        if (FBSDKAccessToken.current()) != nil {
+            fetchUserProfile()
         }
-        
-        func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-            if error != nil {
-                print(error)
-                return
-            }
-            print("success logging into FB")
-        }
+    }
 }
