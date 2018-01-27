@@ -12,7 +12,7 @@ import FBSDKLoginKit
 import JSQMessagesViewController
 import SendBirdSDK
 
-class ChatViewController: UIViewController {
+class ChatViewController: JSQMessagesViewController {
     var currentUser: User?
     var openChannel: SBDOpenChannel?
     var messages: [JSQMessage] = []
@@ -23,6 +23,8 @@ class ChatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         SBDMain.add(self as SBDChannelDelegate, identifier: Constants.chatChannelUrl)
+        self.senderId = self.currentUser?.id
+        self.senderDisplayName = self.currentUser?.fullname()
         connectUser()
     }
     
@@ -76,7 +78,7 @@ class ChatViewController: UIViewController {
     }
 }
 
-extension ChatViewController : SBDChannelDelegate {
+extension ChatViewController : SBDConnectionDelegate, SBDChannelDelegate {
     func channel(_ sender: SBDBaseChannel, didReceive message: SBDBaseMessage) {
         if let userMessage = message as? SBDUserMessage {
             _ = userMessage.sender
@@ -86,7 +88,7 @@ extension ChatViewController : SBDChannelDelegate {
             guard let displayMessage = adminMessage.message else { return }
             print ("\(displayMessage)")
             let banner = Banner(title: "Message from the Administrator", subtitle: displayMessage, image: UIImage(named: "Icon"), backgroundColor: .lightGray)
-            banner.show(duration: 5.0)
+            banner.show()
         }
     }
 }
