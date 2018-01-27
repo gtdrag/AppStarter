@@ -19,6 +19,9 @@ target 'MainProject' do
   pod 'GoogleSignIn'
   pod 'OneSignal', '>= 2.5.2', '< 3.0'
   pod 'FancyTextField'
+  pod 'SendBirdSDK'
+  pod 'JSQMessagesViewController'
+  pod 'BRYXBanner'
   end
 
 

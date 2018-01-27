@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		16E5698764EDFD14B80477B3 /* Pods_MainProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FFB49EF302D0F5F125918FB /* Pods_MainProject.framework */; };
 		D6147BDB201A9B3F0065F330 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6147BDA201A9B3F0065F330 /* ChatViewController.swift */; };
+		D62CF363201BA43E0083AD3C /* UIImageView+MainProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62CF362201BA43E0083AD3C /* UIImageView+MainProject.swift */; };
+		D62CF365201BBE6C0083AD3C /* UIColor+MainProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62CF364201BBE6C0083AD3C /* UIColor+MainProject.swift */; };
 		D692882E2009350B004BDF02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D692882D2009350B004BDF02 /* AppDelegate.swift */; };
 		D69288302009350B004BDF02 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D692882F2009350B004BDF02 /* ViewController.swift */; };
 		D69288332009350B004BDF02 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D69288312009350B004BDF02 /* Main.storyboard */; };
@@ -57,6 +59,8 @@
 		B91B7C6430AA4D1E13D222F3 /* Pods_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneSignalNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2799A917F25E3CF004AEF3C /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		D6147BDA201A9B3F0065F330 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		D62CF362201BA43E0083AD3C /* UIImageView+MainProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+MainProject.swift"; sourceTree = "<group>"; };
+		D62CF364201BBE6C0083AD3C /* UIColor+MainProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+MainProject.swift"; sourceTree = "<group>"; };
 		D692882A2009350B004BDF02 /* MainProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MainProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D692882D2009350B004BDF02 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D692882F2009350B004BDF02 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +157,8 @@
 				D69288392009350B004BDF02 /* Info.plist */,
 				D697CF8120097AE70080438B /* DummyViewController.swift */,
 				D6C49931200D78D6006C8F05 /* UIView+autosizeSubview.swift */,
+				D62CF364201BBE6C0083AD3C /* UIColor+MainProject.swift */,
+				D62CF362201BA43E0083AD3C /* UIImageView+MainProject.swift */,
 				D6147BDA201A9B3F0065F330 /* ChatViewController.swift */,
 			);
 			path = MainProject;
@@ -365,6 +371,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MainProject/Pods-MainProject-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/BRYXBanner/BRYXBanner.framework",
 				"${BUILT_PRODUCTS_DIR}/BWWalkthrough/BWWalkthrough.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
@@ -374,10 +381,15 @@
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
+				"${PODS_ROOT}/SendBirdSDK/SendBirdSDK.framework",
+				"${PODS_ROOT}/SendBirdSDK/SendBirdSDK.framework.dSYM",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BRYXBanner.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BWWalkthrough.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
@@ -387,6 +399,10 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SendBirdSDK.framework",
+				"${DWARF_DSYM_FOLDER_PATH}/SendBirdSDK.framework.dSYM",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -401,7 +417,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D69288302009350B004BDF02 /* ViewController.swift in Sources */,
+				D62CF363201BA43E0083AD3C /* UIImageView+MainProject.swift in Sources */,
 				D697CF8220097AE70080438B /* DummyViewController.swift in Sources */,
+				D62CF365201BBE6C0083AD3C /* UIColor+MainProject.swift in Sources */,
 				D6C49932200D78D6006C8F05 /* UIView+autosizeSubview.swift in Sources */,
 				D697CFCA200D37E20080438B /* SignupViewController.swift in Sources */,
 				D697CFCC200D3D810080438B /* LoginViewController.swift in Sources */,

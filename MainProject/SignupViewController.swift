@@ -10,7 +10,7 @@ import UIKit
 import FBSDKLoginKit
 import GoogleSignIn
 import FancyTextField
-
+import SendBirdSDK
 
 
 protocol signupViewControllerDelegate {
@@ -68,20 +68,20 @@ class SignupViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignI
             
             if (error == nil){
                 guard let data = result as? [String:Any] else { return }
-                
+                let id = data["id"] as! String
                 let firstName = data["first_name"] as! String
                 let lastName = data["last_name"] as! String
                 let email = data["email"] as! String
                 let profilePictureObj = data["picture"] as! NSDictionary
                 let picData = profilePictureObj["data"] as! NSDictionary
                 let pictureUrlString  = picData["url"] as! String
-                let pictureUrl = URL(string: pictureUrlString)
-                self.currentUser = User(firstname: firstName, lastname: lastName, email: email, photo: pictureUrl)
+                self.currentUser = User(id: id, firstname: firstName, lastname: lastName, email: email, photoURL: pictureUrlString)
                 self.gotoChat()
             }
         })
     }
     func gotoChat() {
+        SBDMain.initWithApplicationId(Constants.sendBirdAppID)
         self.delegate?.signupViewControllerGotoChat(user: self.currentUser!)
     }
     
