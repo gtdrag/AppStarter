@@ -24,8 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         GIDSignIn.sharedInstance().delegate = self
         let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false]
         
-        // Replace 'YOUR_APP_ID' with your OneSignal App ID.
-        OneSignal.initWithLaunchOptions(launchOptions,
+         OneSignal.initWithLaunchOptions(launchOptions,
                                         appId: Constants.oneSignalAppID,
                                         handleNotificationAction: nil,
                                         settings: onesignalInitSettings)
