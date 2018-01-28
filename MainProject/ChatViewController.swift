@@ -25,6 +25,7 @@ class ChatViewController: JSQMessagesViewController {
         SBDMain.add(self as SBDChannelDelegate, identifier: Constants.chatChannelUrl)
         self.senderId = self.currentUser?.id
         self.senderDisplayName = self.currentUser?.fullname()
+        self.collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSize()
         connectUser()
     }
     
@@ -35,7 +36,7 @@ class ChatViewController: JSQMessagesViewController {
             if error != nil {
                 print("\(error!)")
             } else {
-                SBDMain.updateCurrentUserInfo(withNickname: self.currentUser?.firstname ?? "", profileUrl: self.currentUser?.photoURL ?? "", completionHandler: { (error) in
+                SBDMain.updateCurrentUserInfo(withNickname: self.currentUser?.fullname() ?? "", profileUrl: self.currentUser?.photoURL ?? "", completionHandler: { (error) in
                     if error != nil {
                         print("\(error!)")
                         return
@@ -100,7 +101,7 @@ class ChatViewController: JSQMessagesViewController {
             }
         })
     }
-
+    
     
     @IBAction func logoutFB() {
         FBSDKLoginManager().logOut()
@@ -152,7 +153,8 @@ extension ChatViewController : SBDConnectionDelegate, SBDChannelDelegate {
         let message = self.messages[indexPath.item]
         var isOutgoing = false
         isOutgoing = message.senderId == self.currentUser?.id
-        let avatar = isOutgoing ? nil : JSQMessagesAvatarImageFactory.avatarImage(withUserInitials: message.senderDisplayName, backgroundColor: UIColor(hexString: "c0c0c0"), textColor: .white, font: UIFont.systemFont(ofSize: 14.0), diameter: 30)
+        let avatar = isOutgoing ? nil : JSQMessagesAvatarImageFactory.avatarImage(withUserInitials: self.initials(fullname: message.senderDisplayName!), backgroundColor: UIColor(hexString: "c0c0c0"), textColor: .white, font: UIFont.systemFont(ofSize: 14.0), diameter: 30)
+        
         return avatar
     }
     
@@ -161,5 +163,17 @@ extension ChatViewController : SBDConnectionDelegate, SBDChannelDelegate {
         self.sendMessage(message: text, sender: id)
         JSQSystemSoundPlayer.jsq_playMessageSentSound()
         self.finishSendingMessage()
+    }
+    
+    func initials(fullname: String) -> String {
+        var nameArray = fullname.components(separatedBy: " ")
+        var initials = ""
+        if let first = nameArray[0].first {
+            initials += String(first)
+        }
+        if let last = nameArray[1].first {
+            initials += String(last)
+        }
+        return initials.uppercased()
     }
 }

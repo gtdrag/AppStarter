@@ -29,10 +29,4 @@ extension User {
     func fullname() -> String {
         return firstname + " " + lastname
     }
-    
-    func initials() -> String {
-        var initials = String(describing: firstname.first)
-        initials += String(describing: lastname.first)
-        return initials.uppercased()
-    }
 }
