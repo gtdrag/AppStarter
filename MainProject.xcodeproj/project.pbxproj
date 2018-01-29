@@ -19,6 +19,7 @@
 		D697CF8220097AE70080438B /* DummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D697CF8120097AE70080438B /* DummyViewController.swift */; };
 		D697CFCA200D37E20080438B /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D697CFC9200D37E20080438B /* SignupViewController.swift */; };
 		D697CFCC200D3D810080438B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D697CFCB200D3D810080438B /* LoginViewController.swift */; };
+		D6AB6959201FB9D900809FA6 /* AsyncPhotoMediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6AB6958201FB9D900809FA6 /* AsyncPhotoMediaItem.swift */; };
 		D6C49932200D78D6006C8F05 /* UIView+autosizeSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C49931200D78D6006C8F05 /* UIView+autosizeSubview.swift */; };
 		D6C49935200E4D2F006C8F05 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C49934200E4D2F006C8F05 /* User.swift */; };
 		D6C4993C200EF350006C8F05 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C4993B200EF350006C8F05 /* Constants.swift */; };
@@ -71,6 +72,7 @@
 		D697CF8120097AE70080438B /* DummyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyViewController.swift; sourceTree = "<group>"; };
 		D697CFC9200D37E20080438B /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		D697CFCB200D3D810080438B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D6AB6958201FB9D900809FA6 /* AsyncPhotoMediaItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncPhotoMediaItem.swift; sourceTree = "<group>"; };
 		D6C49931200D78D6006C8F05 /* UIView+autosizeSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+autosizeSubview.swift"; sourceTree = "<group>"; };
 		D6C49933200D990A006C8F05 /* MainProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MainProject.entitlements; sourceTree = "<group>"; };
 		D6C49934200E4D2F006C8F05 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 		D692882C2009350B004BDF02 /* MainProject */ = {
 			isa = PBXGroup;
 			children = (
+				D6AB6958201FB9D900809FA6 /* AsyncPhotoMediaItem.swift */,
 				D6C49933200D990A006C8F05 /* MainProject.entitlements */,
 				D697CFCB200D3D810080438B /* LoginViewController.swift */,
 				D6C49934200E4D2F006C8F05 /* User.swift */,
@@ -421,6 +424,7 @@
 				D69288302009350B004BDF02 /* ViewController.swift in Sources */,
 				D62CF363201BA43E0083AD3C /* UIImageView+MainProject.swift in Sources */,
 				D697CF8220097AE70080438B /* DummyViewController.swift in Sources */,
+				D6AB6959201FB9D900809FA6 /* AsyncPhotoMediaItem.swift in Sources */,
 				D62CF365201BBE6C0083AD3C /* UIColor+MainProject.swift in Sources */,
 				D6C49932200D78D6006C8F05 /* UIView+autosizeSubview.swift in Sources */,
 				D697CFCA200D37E20080438B /* SignupViewController.swift in Sources */,

@@ -76,14 +76,12 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     private func addMessage(message: SBDFileMessage) {
+        let size = CGSize(width: 300, height: 300)
         let url = URL(string: message.url)
-        let data = try? Data(contentsOf: url!)
-        let pic = UIImage(data: data!)
-        let mediaItem = JSQPhotoMediaItem(image: pic)
-        mediaItem?.appliesMediaViewMaskAsOutgoing = false
+        let mediaItem = AsyncPhotoMediaItem(withURL: url!, imageSize: size, isOperator: false)
         if let message = JSQMessage(senderId: message.sender?.userId ?? "", displayName: message.sender?.nickname ?? "", media: mediaItem) {
             messages.append(message)
-            
+            finishReceivingMessage()
             self.reloadMessagesView()
         }
     }
