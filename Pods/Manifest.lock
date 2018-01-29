@@ -52,6 +52,7 @@ PODS:
   - JSQMessagesViewController (7.3.5):
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
+  - Kingfisher (4.6.1)
   - OneSignal (2.6.2)
   - SendBirdSDK (3.0.85)
 
@@ -65,6 +66,7 @@ DEPENDENCIES:
   - FBSDKShareKit (~> 4.10.0)
   - GoogleSignIn
   - JSQMessagesViewController
+  - Kingfisher (~> 4.0)
   - OneSignal (< 3.0, >= 2.5.2)
   - SendBirdSDK
 
@@ -83,9 +85,10 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: ebaa1f79a5366922c1735f1566901f50beba23b7
   JSQMessagesViewController: 6587f56aedbcb150a8ba1d968e1ef58b1bc758b7
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
+  Kingfisher: 1f9157d9c02b380cbd0b7cc890161195164eb634
   OneSignal: 95127bce89b9e495079e7205e3d47c88590b5750
   SendBirdSDK: 2be3266a24b050218665bf8eb2f7aeb511ed8196
 
-PODFILE CHECKSUM: fe6199c8584031510c091863e95fb606a65820d8
+PODFILE CHECKSUM: 1cb92b73ffd36c250cf0c748c4956fbf914a266e
 
 COCOAPODS: 1.3.1

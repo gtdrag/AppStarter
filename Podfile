@@ -22,6 +22,7 @@ target 'MainProject' do
   pod 'SendBirdSDK'
   pod 'JSQMessagesViewController'
   pod 'BRYXBanner'
+  pod 'Kingfisher', '~> 4.0'
   end
 
 

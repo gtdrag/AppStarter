@@ -11,6 +11,8 @@ import BRYXBanner
 import FBSDKLoginKit
 import JSQMessagesViewController
 import SendBirdSDK
+import MobileCoreServices
+import Photos
 
 class ChatViewController: JSQMessagesViewController {
     var currentUser: User?
@@ -18,17 +20,18 @@ class ChatViewController: JSQMessagesViewController {
     var messages: [JSQMessage] = []
     let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor(hexString: "e5e5ea"))
     let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor(hexString: "51bbf7"))
-    
+    let picker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        picker.delegate = self
         SBDMain.add(self as SBDChannelDelegate, identifier: Constants.chatChannelUrl)
         self.senderId = self.currentUser?.id
         self.senderDisplayName = self.currentUser?.fullname()
         self.collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSize()
         connectUser()
+        
     }
-    
     
     private func connectUser() {
         guard let id = currentUser?.id else { return }
@@ -72,6 +75,19 @@ class ChatViewController: JSQMessagesViewController {
         }
     }
     
+    private func addMessage(message: SBDFileMessage) {
+        let url = URL(string: message.url)
+        let data = try? Data(contentsOf: url!)
+        let pic = UIImage(data: data!)
+        let mediaItem = JSQPhotoMediaItem(image: pic)
+        mediaItem?.appliesMediaViewMaskAsOutgoing = false
+        if let message = JSQMessage(senderId: message.sender?.userId ?? "", displayName: message.sender?.nickname ?? "", media: mediaItem) {
+            messages.append(message)
+            
+            self.reloadMessagesView()
+        }
+    }
+    
     private func addMessage(message: SBDUserMessage) {
         if let message = JSQMessage(senderId: message.sender?.userId ?? "", senderDisplayName: message.sender?.nickname ?? "", date: Date(timeIntervalSince1970: TimeInterval(message.createdAt / 1000))
             , text: message.message) {
@@ -109,8 +125,13 @@ class ChatViewController: JSQMessagesViewController {
     }
 }
 
-extension ChatViewController : SBDConnectionDelegate, SBDChannelDelegate {
+extension ChatViewController : SBDConnectionDelegate, SBDChannelDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func channel(_ sender: SBDBaseChannel, didReceive message: SBDBaseMessage) {
+        if let userMessage = message as? SBDFileMessage {
+            _ = userMessage.sender
+            addMessage(message: userMessage)
+        }
+        
         if let userMessage = message as? SBDUserMessage {
             _ = userMessage.sender
             addMessage(message: userMessage)
@@ -131,6 +152,7 @@ extension ChatViewController : SBDConnectionDelegate, SBDChannelDelegate {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return messages.count
     }
+    
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
         let data = messages[indexPath.row]
         if data.senderId == self.currentUser?.id {
@@ -145,6 +167,7 @@ extension ChatViewController : SBDConnectionDelegate, SBDChannelDelegate {
         let message = self.messages[indexPath.item]
         var isOutgoing = false
         isOutgoing = message.senderId == self.currentUser?.id
+        guard cell.textView != nil else { return cell }
         cell.textView.textColor = isOutgoing ? .white : .black
         return cell
     }
@@ -165,15 +188,48 @@ extension ChatViewController : SBDConnectionDelegate, SBDChannelDelegate {
         self.finishSendingMessage()
     }
     
-    func initials(fullname: String) -> String {
-        var nameArray = fullname.components(separatedBy: " ")
-        var initials = ""
-        if let first = nameArray[0].first {
-            initials += String(first)
-        }
-        if let last = nameArray[1].first {
-            initials += String(last)
-        }
-        return initials.uppercased()
+    override func didPressAccessoryButton(_ sender: UIButton!) {
+        picker.allowsEditing = false
+        picker.sourceType = .photoLibrary
+        self.present(picker, animated: true, completion: nil)
     }
+    
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+            let picture = info[UIImagePickerControllerOriginalImage] as? UIImage
+            if (info[UIImagePickerControllerOriginalImage] as? UIImage) != nil
+            {
+                let mediaItem = JSQPhotoMediaItem(image: nil)
+                mediaItem?.appliesMediaViewMaskAsOutgoing = true
+                mediaItem?.image = UIImage(data: UIImageJPEGRepresentation(picture!, 0.5)!)
+                let sendMessage = JSQMessage(senderId: senderId, displayName: self.initials(fullname: (currentUser?.fullname()) ?? ""), media: mediaItem)
+                self.openChannel?.sendFileMessage(withBinaryData: UIImageJPEGRepresentation(picture!, 0.5)!, filename: "pic", type: "jpg", size: UInt((UIImageJPEGRepresentation(picture!, 0.5)!.count)), data: "", customType: "", completionHandler: { (message, error) in
+                    if error != nil {
+                        print("\(error!)")
+                        return
+                    }
+                })
+                self.messages.append(sendMessage!)
+                self.finishSendingMessage()
+            }
+    
+            dismiss(animated: true, completion: nil)
+        }
+    
+    
+                
+                func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+                    self.dismiss(animated: true, completion: nil)
+                }
+                
+                func initials(fullname: String) -> String {
+                    var nameArray = fullname.components(separatedBy: " ")
+                    var initials = ""
+                    if let first = nameArray[0].first {
+                        initials += String(first)
+                    }
+                    if let last = nameArray[1].first {
+                        initials += String(last)
+                    }
+                    return initials.uppercased()
+                }
 }
