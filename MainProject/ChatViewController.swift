@@ -11,8 +11,7 @@ import BRYXBanner
 import FBSDKLoginKit
 import JSQMessagesViewController
 import SendBirdSDK
-import MobileCoreServices
-import Photos
+import ImageIO
 
 class ChatViewController: JSQMessagesViewController {
     var currentUser: User?
@@ -76,12 +75,11 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     private func addMessage(message: SBDFileMessage) {
-        let size = CGSize(width: 300, height: 300)
         let url = URL(string: message.url)
-        let mediaItem = AsyncPhotoMediaItem(withURL: url!, imageSize: size, isOperator: false)
+        let size = sizeForImage(at: url!)
+        let mediaItem = AsyncPhotoMediaItem(withURL: url!, imageSize: size!, isOperator: false)
         if let message = JSQMessage(senderId: message.sender?.userId ?? "", displayName: message.sender?.nickname ?? "", media: mediaItem) {
             messages.append(message)
-            finishReceivingMessage()
             self.reloadMessagesView()
         }
     }
@@ -116,6 +114,14 @@ class ChatViewController: JSQMessagesViewController {
         })
     }
     
+    func sendMessage(imageData: Data?) {
+        self.openChannel?.sendFileMessage(withBinaryData: imageData!, filename: "pic", type: "jpg", size: UInt(imageData!.count), data: "", customType: "", completionHandler: { (userMessage, error) in
+            if error != nil {
+                print("\(error!)")
+                return
+            }
+        })
+    }
     
     @IBAction func logoutFB() {
         FBSDKLoginManager().logOut()
@@ -197,16 +203,14 @@ extension ChatViewController : SBDConnectionDelegate, SBDChannelDelegate, UIImag
             if (info[UIImagePickerControllerOriginalImage] as? UIImage) != nil
             {
                 let mediaItem = JSQPhotoMediaItem(image: nil)
+                let imageData = UIImageJPEGRepresentation(picture!, 0.3)
                 mediaItem?.appliesMediaViewMaskAsOutgoing = true
-                mediaItem?.image = UIImage(data: UIImageJPEGRepresentation(picture!, 0.5)!)
-                let sendMessage = JSQMessage(senderId: senderId, displayName: self.initials(fullname: (currentUser?.fullname()) ?? ""), media: mediaItem)
-                self.openChannel?.sendFileMessage(withBinaryData: UIImageJPEGRepresentation(picture!, 0.5)!, filename: "pic", type: "jpg", size: UInt((UIImageJPEGRepresentation(picture!, 0.5)!.count)), data: "", customType: "", completionHandler: { (message, error) in
-                    if error != nil {
-                        print("\(error!)")
-                        return
-                    }
-                })
-                self.messages.append(sendMessage!)
+                mediaItem?.image = UIImage(data: imageData!)
+                if let sendMessage = JSQMessage(senderId: senderId, displayName: self.initials(fullname: (currentUser?.fullname()) ?? ""), media: mediaItem) {
+                    messages.append(sendMessage)
+                }
+                self.sendMessage(imageData: imageData)
+                JSQSystemSoundPlayer.jsq_playMessageSentSound()
                 self.finishSendingMessage()
             }
     
@@ -230,4 +234,27 @@ extension ChatViewController : SBDConnectionDelegate, SBDChannelDelegate, UIImag
                     }
                     return initials.uppercased()
                 }
+    
+    func sizeForImage(at url: URL) -> CGSize? {
+        
+        guard let imageSource = CGImageSourceCreateWithURL(url as CFURL, nil)
+            , let imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, nil) as? [AnyHashable: Any]
+            , let pixelWidth = imageProperties[kCGImagePropertyPixelWidth as String]
+            , let pixelHeight = imageProperties[kCGImagePropertyPixelHeight as String]
+            , let orientationNumber = imageProperties[kCGImagePropertyOrientation as String]
+            else {
+                return nil
+        }
+        
+        var width: CGFloat = 0, height: CGFloat = 0, orientation: Int = 0
+        
+        CFNumberGetValue(pixelWidth as! CFNumber, .cgFloatType, &width)
+        CFNumberGetValue(pixelHeight as! CFNumber, .cgFloatType, &height)
+        CFNumberGetValue(orientationNumber as! CFNumber, .intType, &orientation)
+        
+        // Check orientation and flip size if required
+        if orientation > 4 { let temp = width; width = height; height = temp }
+        let ratio = width / height
+        return CGSize(width: 200, height: 200 / ratio)
+    }
 }

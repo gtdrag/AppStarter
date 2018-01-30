@@ -27,24 +27,25 @@ class AsyncPhotoMediaItem: JSQPhotoMediaItem {
         asyncImageView.layer.cornerRadius = 20
         asyncImageView.backgroundColor = UIColor.jsq_messageBubbleLightGray()
         
-        let activityIndicator = JSQMessagesMediaPlaceholderView.withActivityIndicator()
-        activityIndicator?.frame = asyncImageView.frame
-        asyncImageView.addSubview(activityIndicator!)
+        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        activityIndicator.center = asyncImageView.center
+        activityIndicator.startAnimating()
+        asyncImageView.addSubview(activityIndicator)
+
         
         
         KingfisherManager.shared.cache.retrieveImage(forKey: url.absoluteString, options: nil) { (image, cacheType) -> () in
             
             if let image = image {
                 self.asyncImageView.image = image
-                activityIndicator?.removeFromSuperview()
+                activityIndicator.removeFromSuperview()
             } else {
                 
-                
                 KingfisherManager.shared.downloader.downloadImage(with: url , progressBlock: nil) { (image, error, imageURL, originalData) -> () in
-                    
+                   
                     if let image = image {
                         self.asyncImageView.image = image
-                        activityIndicator?.removeFromSuperview()
+                        activityIndicator.removeFromSuperview()
                         KingfisherManager.shared.cache.store(image, forKey: url.absoluteString)
                         
                     }
